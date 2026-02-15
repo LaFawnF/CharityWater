@@ -1,2 +1,774 @@
 # CharityWater
 A responsive charity: water landing page designed for college students, featuring bold storytelling, clear impact stats, and a strong donation call-to-action. 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>charity: water - Stop Scrolling. Start A Water Revolution.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --yellow: #FFC907;
+            --black: #2E2E2E;
+            --white: #FFFFFF;
+            --blue: #77A8BB;
+            --light-bg: #F8F9FA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--black);
+            line-height: 1.6;
+            width: 1920px;
+            margin: 0 auto;
+            background: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 1100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a1a 0%, var(--black) 100%);
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 1;
+            filter: brightness(0.9) contrast(1.1);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 100px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 120pt;
+            font-weight: 900;
+            line-height: 0.95;
+            margin-bottom: 60px;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: -5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .hero h1 .highlight {
+            color: var(--yellow);
+        }
+
+        .hero-subheadline {
+            font-size: 36pt;
+            color: var(--white);
+            margin-bottom: 80px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--black);
+            padding: 40px 100px;
+            font-size: 32pt;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Problem Section */
+        .problem-section {
+            background: var(--yellow);
+            color: var(--black);
+            text-align: center;
+            padding: 120px 100px;
+            position: relative;
+        }
+
+        .big-stat {
+            font-size: 130pt;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 40px;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .problem-text {
+            font-size: 32pt;
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            font-weight: 400;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            margin-top: 80px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-card .emoji {
+            font-size: 80pt;
+            display: block;
+            margin-bottom: 30px;
+        }
+
+        .stat-card p {
+            font-size: 22pt;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        /* Students Matter Section - REDESIGNED */
+        .students-section {
+            background: linear-gradient(135deg, var(--black) 0%, #1a1a1a 100%);
+            padding: 120px 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .students-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 201, 7, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .section-title {
+            font-size: 90pt;
+            font-weight: 900;
+            margin-bottom: 100px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: -3px;
+            line-height: 0.95;
+            color: var(--white);
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title .yellow-highlight {
+            color: var(--yellow);
+        }
+
+        /* New Card Design - Stacked Layout */
+        .students-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .impact-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 200px 1fr 300px;
+            align-items: center;
+            gap: 60px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .impact-card:hover {
+            transform: translateX(20px);
+            box-shadow: 0 20px 60px rgba(255, 201, 7, 0.3);
+        }
+
+        .impact-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 8px;
+            height: 100%;
+            background: var(--yellow);
+        }
+
+        /* Number Badge */
+        .card-number {
+            font-size: 100pt;
+            font-weight: 900;
+            color: var(--yellow);
+            font-family: 'Space Mono', monospace;
+            text-align: center;
+            line-height: 1;
+            opacity: 0.3;
+            padding-left: 40px;
+        }
+
+        /* Content Area */
+        .card-content {
+            padding: 50px 0;
+        }
+
+        .card-icon {
+            font-size: 50pt;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .impact-card h3 {
+            font-size: 36pt;
+            margin-bottom: 15px;
+            font-weight: 900;
+            color: var(--black);
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .impact-card p {
+            font-size: 18pt;
+            line-height: 1.6;
+            font-weight: 400;
+            color: #666;
+            max-width: 600px;
+        }
+
+        /* Visual Element Area */
+        .card-visual {
+            padding: 50px 40px 50px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Card 1: Progress Circles */
+        .progress-circles {
+            display: flex;
+            gap: 15px;
+            align-items: flex-end;
+        }
+
+        .circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--yellow);
+            opacity: 0.3;
+            animation: grow 2s ease-in-out infinite;
+        }
+
+        .circle:nth-child(1) {
+            animation-delay: 0s;
+            opacity: 1;
+        }
+
+        .circle:nth-child(2) {
+            width: 80px;
+            height: 80px;
+            animation-delay: 0.2s;
+            opacity: 0.8;
+        }
+
+        .circle:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            animation-delay: 0.4s;
+            opacity: 0.6;
+        }
+
+        .circle:nth-child(4) {
+            width: 120px;
+            height: 120px;
+            animation-delay: 0.6s;
+            opacity: 0.4;
+        }
+
+        @keyframes grow {
+            0%, 100% { transform: scale(0.9); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Card 2: Dollar to Well Visualization */
+        .dollar-well {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .dollar-icon {
+            font-size: 60pt;
+            color: var(--yellow);
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 30px solid var(--yellow);
+            animation: arrowPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes arrowPulse {
+            0%, 100% { opacity: 0.5; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(10px); }
+        }
+
+        .well-visual-new {
+            width: 100px;
+            height: 100px;
+            border: 6px solid var(--blue);
+            border-radius: 15px;
+            background: linear-gradient(to bottom, transparent 40%, var(--blue) 40%);
+            position: relative;
+            animation: fillWater 3s ease-in-out infinite;
+        }
+
+        @keyframes fillWater {
+            0%, 100% { background: linear-gradient(to bottom, transparent 60%, var(--blue) 60%); }
+            50% { background: linear-gradient(to bottom, transparent 20%, var(--blue) 20%); }
+        }
+
+        /* Card 3: Share Network */
+        .share-network {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+
+        .center-node {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: var(--yellow);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 30px var(--yellow);
+            z-index: 2;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .outer-node {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: var(--blue);
+            border-radius: 50%;
+            animation: orbit 4s linear infinite;
+        }
+
+        .outer-node:nth-child(2) {
+            top: 10%;
+            left: 50%;
+            animation-delay: 0s;
+        }
+
+        .outer-node:nth-child(3) {
+            top: 50%;
+            right: 10%;
+            animation-delay: 1s;
+        }
+
+        .outer-node:nth-child(4) {
+            bottom: 10%;
+            left: 50%;
+            animation-delay: 2s;
+        }
+
+        .outer-node:nth-child(5) {
+            top: 50%;
+            left: 10%;
+            animation-delay: 3s;
+        }
+
+        @keyframes orbit {
+            0%, 100% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+
+        /* Connection Lines */
+        .connection-line {
+            position: absolute;
+            width: 2px;
+            background: var(--yellow);
+            opacity: 0.3;
+            top: 50%;
+            left: 50%;
+            transform-origin: top center;
+        }
+
+        .line-1 {
+            height: 70px;
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        .line-2 {
+            height: 70px;
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+
+        .line-3 {
+            height: 70px;
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+
+        .line-4 {
+            height: 70px;
+            transform: translate(-50%, -50%) rotate(270deg);
+        }
+
+        /* Transparency Section */
+        .transparency-section {
+            background: var(--black);
+            color: var(--white);
+            padding: 120px 100px;
+        }
+
+        .transparency-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            margin-top: 100px;
+        }
+
+        .transparency-card {
+            text-align: center;
+            padding: 80px 40px;
+            border: 5px solid var(--yellow);
+            border-radius: 30px;
+            background: transparent;
+        }
+
+        .percentage {
+            font-size: 110pt;
+            font-weight: 700;
+            color: var(--yellow);
+            font-family: 'Space Mono', monospace;
+            display: block;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .transparency-card h3 {
+            font-size: 28pt;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .transparency-card p {
+            font-size: 20pt;
+            line-height: 1.5;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            background: linear-gradient(135deg, var(--yellow) 0%, #ffdb4d 100%);
+            color: var(--black);
+            text-align: center;
+            padding: 120px 100px;
+            position: relative;
+        }
+
+        .final-cta h2 {
+            font-size: 100pt;
+            font-weight: 900;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: -3px;
+            line-height: 0.95;
+        }
+
+        .final-cta p {
+            font-size: 36pt;
+            margin-bottom: 80px;
+            font-weight: 500;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cta-secondary {
+            display: inline-block;
+            background: var(--blue);
+            color: var(--white);
+            padding: 35px 80px;
+            font-size: 28pt;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-tertiary {
+            display: inline-block;
+            background: transparent;
+            color: var(--black);
+            padding: 35px 60px;
+            font-size: 26pt;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 5px solid var(--black);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 80px 100px;
+            text-align: center;
+        }
+
+        .logo-text {
+            font-size: 48pt;
+            font-weight: 700;
+            color: var(--yellow);
+            margin-bottom: 30px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .footer-text {
+            opacity: 0.7;
+            font-size: 18pt;
+            line-height: 1.8;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-text + .footer-text {
+            margin-top: 15px;
+        }
+
+        /* Print Optimization for PDF */
+        @media print {
+            body {
+                width: 1920px;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+            
+            .hero,
+            .problem-section,
+            .students-section,
+            .transparency-section,
+            .final-cta,
+            footer {
+                page-break-inside: avoid;
+            }
+        }
+
+        @page {
+            size: 1920px 4500px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="hero-image.jpg" alt="Hands holding glass of clean water" class="hero-image">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>STOP SCROLLING.<br>START A <span class="highlight">WATER<br>REVOLUTION.</span></h1>
+            <p class="hero-subheadline">Impact matters. $10 brings clean water to communities in need, and we can track every step together.</p>
+            <a href="#donate" class="cta-primary">GIVE $10. MOVE THE WORLD.</a>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="big-stat">771 MILLION</div>
+        <p class="problem-text">people worldwide lack access to clean water. That's nearly 1 in 10 people.</p>
+        
+        <div class="stat-grid">
+            <div class="stat-card">
+                <span class="emoji">⏱️</span>
+                <p>Women and children walk hours daily to collect water</p>
+            </div>
+            <div class="stat-card">
+                <span class="emoji">☠️</span>
+                <p>Waterborne diseases claim thousands of lives each year</p>
+            </div>
+            <div class="stat-card">
+                <span class="emoji" style="color: #77A8BB;">🎒</span>
+                <p>Girls miss school spending time fetching water</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Students Matter Section - REDESIGNED -->
+    <section class="students-section">
+        <h2 class="section-title">WHEN <span class="yellow-highlight">CAMPUSES</span> MOVE,<br>THE WORLD MOVES.</h2>
+        
+        <div class="students-grid">
+            <!-- Card 1 -->
+            <div class="impact-card">
+                <div class="card-number">01</div>
+                <div class="card-content">
+                    <span class="card-icon">🌊</span>
+                    <h3>Collective Giving<br>Multiplies Impact</h3>
+                    <p>When thousands of students give $10, entire communities get access to clean water. Your contribution joins a powerful movement.</p>
+                </div>
+                <div class="card-visual">
+                    <div class="progress-circles">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="impact-card">
+                <div class="card-number">02</div>
+                <div class="card-content">
+                    <span class="card-icon">💰</span>
+                    <h3>Small Donations<br>Create Wells</h3>
+                    <p>Every dollar goes directly to building wells, installing filters, and bringing clean water to those who need it most.</p>
+                </div>
+                <div class="card-visual">
+                    <div class="dollar-well">
+                        <div class="dollar-icon">$10</div>
+                        <div class="arrow-down"></div>
+                        <div class="well-visual-new"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="impact-card">
+                <div class="card-number">03</div>
+                <div class="card-content">
+                    <span class="card-icon" style="color: #77A8BB;">📍</span>
+                    <h3>Share Your<br>Impact Socially</h3>
+                    <p>Track your donation with GPS coordinates and photos. See the exact community you helped and inspire others to join.</p>
+                </div>
+                <div class="card-visual">
+                    <div class="share-network">
+                        <div class="connection-line line-1"></div>
+                        <div class="connection-line line-2"></div>
+                        <div class="connection-line line-3"></div>
+                        <div class="connection-line line-4"></div>
+                        <div class="center-node"></div>
+                        <div class="outer-node"></div>
+                        <div class="outer-node"></div>
+                        <div class="outer-node"></div>
+                        <div class="outer-node"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transparency Section -->
+    <section class="transparency-section">
+        <h2 class="section-title" style="color: var(--white);">THE 100% MODEL:<br>TOTAL TRANSPARENCY</h2>
+        
+        <div class="transparency-grid">
+            <div class="transparency-card">
+                <span class="percentage">100%</span>
+                <h3>Of Your Donation</h3>
+                <p>Goes directly to clean water projects. Every single dollar.</p>
+            </div>
+            
+            <div class="transparency-card">
+                <span class="percentage">📍</span>
+                <h3>GPS Tracking</h3>
+                <p>See exactly where your donation went on an interactive map.</p>
+            </div>
+            
+            <div class="transparency-card">
+                <span class="percentage">📸</span>
+                <h3>Photo Updates</h3>
+                <p>Receive real photos from the communities you've helped transform.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <h2>START A WATER<br>REVOLUTION ON<br>YOUR CAMPUS.</h2>
+        <p>Be the generation that ends the global water crisis.</p>
+        
+        <div class="cta-buttons">
+            <a href="#donate" class="cta-secondary">DONATE NOW</a>
+            <a href="#fundraiser" class="cta-tertiary">START A CAMPUS FUNDRAISER</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="logo-text">charity: water</div>
+        <p class="footer-text">100% of public donations directly fund clean water projects.</p>
+        <p class="footer-text">© 2026 charity: water. All rights reserved.</p>
+    </footer>
+</body>
+</html>
